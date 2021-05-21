@@ -1,0 +1,25 @@
+service: learning-gremio
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: go1.x
+  lambdaHashingVersion: 20201221
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions:
+  hello:
+    handler: bin/registere
+    events:
+      - httpApi:
+          path: /registere
+          method: get
+  world:
+    handler: bin/world
+    events:
+      - httpApi:
+          path: /world
+          method: get

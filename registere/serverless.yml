@@ -1,0 +1,19 @@
+service: prueba
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: go1.x
+  lambdaHashingVersion: 20201221
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions:
+  v1:
+    handler: bin/v1
+    events:
+      - httpApi:
+          path: /v1
+          method: get
